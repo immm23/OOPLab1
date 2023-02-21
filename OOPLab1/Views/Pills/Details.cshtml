@@ -1,0 +1,68 @@
+﻿@model OOPLab1.Models.Pill
+
+@{
+    ViewData["Title"] = "Детально";
+}
+
+<h1>Детально</h1>
+
+<div>
+    <h4>Ліки</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SideEffects)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SideEffects)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ClassNavigation.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Illnes)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var illness in Model.Illnes)
+            {
+                @illness.Name
+                if (!illness.Equals(Model.Illnes.Last()))
+                {
+                    @(", ")
+                }
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pharmasies)
+        </dt>
+        <dd class="col-sm-10">
+             @foreach (var pharmasy in Model.Pharmasies)
+            {
+                @pharmasy.Name
+                if (!pharmasy.Equals(Model.Pharmasies.Last()))
+                {
+                    @(", ")
+                }
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Редагувати</a> |
+    <a asp-action="Index">Назад до списку</a>
+</div>

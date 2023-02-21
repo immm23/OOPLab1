@@ -1,0 +1,71 @@
+﻿@model OOPLab1.Models.Pill
+
+@{
+    ViewData["Title"] = "Видалити";
+}
+
+<h1>Видалити</h1>
+
+<h3>Точно?</h3>
+<div>
+    <h4>Лікарський засіб</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SideEffects)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SideEffects)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ClassNavigation.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Illnes)
+        </dt>
+        <dd class = "col-sm-10">
+            @foreach (var illness in Model.Illnes)
+            {
+                @illness.Name
+                if (!illness.Equals(Model.Illnes.Last()))
+                {
+                    @(", ")
+                }
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pharmasies)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var illness in Model.Pharmasies)
+            {
+                @illness.Name
+                if (!illness.Equals(Model.Pharmasies.Last()))
+                {
+                    @(", ")
+                }
+            }
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Видалити" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад до списку</a>
+    </form>
+</div>

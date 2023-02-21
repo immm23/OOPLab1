@@ -1,15 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OOPLab1.Models;
 
 public partial class Pharmasy
 {
-    public string? Name { get; set; }
-
     public int Id { get; set; }
 
-    public string? Adress { get; set; }
+    [Display(Name = "Назва")]
+    [Required(ErrorMessage = "Назва не може бути порожньою")]
+    public string Name { get; set; } = null!;
+    [Display(Name = "Адреса")]
+    [Required(ErrorMessage = "Адреса не може бути порожньою")]
+    public string Adress { get; set; } = null!;
 
-    public virtual ICollection<PillsAndPharmasy> PillsAndPharmasies { get; } = new List<PillsAndPharmasy>();
+    [Display(Name = "Номер телефону")]
+    [Required(ErrorMessage = "Номер телефону не може бути порожнім")]
+    [Phone]
+    public string PhoneNumber { get; set; } = null!;
+
+    [Display(Name = "Ім'я власника")]
+    [Required(ErrorMessage = "Ім'я власника не може бути порожнім")]
+    public string OwnerName { get; set; } = null!;
+
+    [Display(Name = "Наявні ліки")]
+    public virtual ICollection<Pill> Pills { get; } = new List<Pill>();
+
+    [NotMapped]
+    [Display(Name = "Наявні ліки")]
+    public int[]? SelectedPills { get; set; }
 }

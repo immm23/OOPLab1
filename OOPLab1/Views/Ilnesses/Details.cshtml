@@ -1,0 +1,49 @@
+﻿@model OOPLab1.Models.Ilness
+
+@{
+    ViewData["Title"] = "Детально";
+}
+
+<h1>Детально</h1>
+
+<div>
+    <h4>Детально</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Symptoms)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Symptoms)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pills)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var pills in Model.Pills)
+            {
+                @pills.Name
+                if (!pills.Equals(Model.Pills.Last()))
+                {
+                    @(", ")
+                }
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Редагувати</a> |
+    <a asp-action="Index">Назад до списку</a>
+</div>

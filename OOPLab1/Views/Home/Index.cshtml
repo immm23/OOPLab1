@@ -1,8 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Каталог";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Категорії</h1>
+    <a asp-action="Index" asp-controller="Pills"><h4>Ліки</h4></a>
+    <a asp-action="Index" asp-controller="Classes"><h4>Класи лікарських засобів</h4></a>
+    <a asp-action="Index" asp-controller="Ilnesses"><h4>Хвороби</h4></a>
+    <a asp-action="Index" asp-controller="Pharmasies"><h4>Аптеки</h4></a>
 </div>
